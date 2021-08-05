@@ -16,7 +16,12 @@ provider "snowflake" {
   // optional
   role = "desired_role"
 }
-
+# warehouse
+resource snowflake_warehouse "default_warehouse" {
+  name           = "analytics"
+  comment        = "Where analytics happens"
+  warehouse_size = "small"
+}
 #create database
 resource "snowflake_database" "transactional_db" {
   name = "transactions_db"
@@ -31,6 +36,7 @@ resource "snowflake_user" "looker_user" {
   comment      = "The account Looker will be using to access transactional data for analysis"
   password     = "secret"
   default_role = snowflake_role.looker_bi_role.name
+  default_warehouse = snowflake_warehouse.default_warehouse.name
 }
 
 # grant
