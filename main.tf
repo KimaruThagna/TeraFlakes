@@ -17,7 +17,7 @@ provider "snowflake" {
   role = "desired_role"
 }
 # warehouse
-resource snowflake_warehouse "default_warehouse" {
+resource "snowflake_warehouse" "default_warehouse" {
   name           = "analytics"
   comment        = "Where analytics happens"
   warehouse_size = "small"
@@ -32,10 +32,10 @@ resource "snowflake_role" "looker_bi_role" {
 }
 # create user
 resource "snowflake_user" "looker_user" {
-  name         = "Looker"
-  comment      = "The account Looker will be using to access transactional data for analysis"
-  password     = "secret"
-  default_role = snowflake_role.looker_bi_role.name
+  name              = "Looker"
+  comment           = "The account Looker will be using to access transactional data for analysis"
+  password          = "secret"
+  default_role      = snowflake_role.looker_bi_role.name
   default_warehouse = snowflake_warehouse.default_warehouse.name
 }
 
@@ -46,9 +46,9 @@ resource "snowflake_role_grants" "looker_role_grant" {
 }
 
 # create a set of schemas via a loop
-resource snowflake_schema schema {
-for_each = var.schema_map
-name = each.value
-database = snowflake_database.transactional_db.name
+resource "snowflake_schema" "schema" {
+  for_each = var.schema_map
+  name     = each.value
+  database = snowflake_database.transactional_db.name
 
 }
