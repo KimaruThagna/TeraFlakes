@@ -44,3 +44,11 @@ resource "snowflake_role_grants" "looker_role_grant" {
   role_name = snowflake_role.looker_bi_role.name
   users     = ["ADMIN", snowflake_user.looker_user.name] # list of existing users who can have this role
 }
+
+# create a set of schemas via a loop
+resource snowflake_schema schema {
+for_each = var.schema_map
+name = each.value
+database = snowflake_database.transactional_db.name
+
+}
