@@ -25,3 +25,16 @@ resource snowflake_database "transactional_db"{
 resource snowlake_role "looker_bi_role"{
     name = "looker"
 }
+# create user
+resource snowflake_user "looker_user" {
+  name         = "Looker"
+  comment      = "The account Looker will be using to access transactional data for analysis"
+  password     = "secret"
+  default_role      = looker_bi_role.name
+}
+
+# grant
+resource snowlake_role_grants "looker_role_grant"{
+    role_name = looker_bi_role.name
+    users = ["ADMIN", looker_user.name] # list of existing users who can have this role
+}
