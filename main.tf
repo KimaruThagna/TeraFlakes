@@ -7,6 +7,12 @@ terraform {
   }
 }
 
-provider "snowflake" {
-  # Configuration options
+provider snowflake {
+  // required
+  username = "your username"
+  account  = "your account"
+  region   = "us-east-1"
+  password = "your password"
+  // optional
+  role = "desired_role"
 }
