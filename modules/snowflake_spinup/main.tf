@@ -1,32 +1,32 @@
 
 provider "snowflake" {
   // required
-  username = "your username"
-  account  = "your account"
-  region   = "east-us-2.azure"
-  password = "your password"
+  username = var.username
+  account  = var.account
+  region   = var.region
+  password = var.password
   // optional
-  role = "desired_role"
+  role = var.role
 }
 # warehouse
 resource snowflake_warehouse "default_warehouse" {
-  name           = "analytics"
+  name           = var.warehouse
   comment        = "Where analytics happens"
-  warehouse_size = "small"
+  warehouse_size = var.warehouse_size
 }
 #create database
 resource "snowflake_database" "transactional_db" {
-  name = "transactions_db"
+  name = var.database
 }
 # create role
 resource "snowflake_role" "looker_bi_role" {
-  name = "looker"
+  name = var.db_role
 }
 # create user
 resource "snowflake_user" "looker_user" {
-  name         = "Looker"
+  name         = var.db_user
   comment      = "The account Looker will be using to access transactional data for analysis"
-  password     = "secret"
+  password     = var.db_password
   default_role = snowflake_role.looker_bi_role.name
   default_warehouse = snowflake_warehouse.default_warehouse.name
 }
