@@ -1,9 +1,13 @@
-required_providers {
+terraform {
+  required_version = ">=0.12"
+  required_providers {
     snowflake = {
       source  = "chanzuckerberg/snowflake"
       version = "0.25.15"
     }
   }
+}
+
 provider "snowflake" {
   // required
   username = var.username

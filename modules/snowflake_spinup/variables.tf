@@ -58,7 +58,7 @@ variable "db_role"{
     description = "database role"
     default = "company_default_db_role"
 }
-variable "db_username"{
+variable "db_user"{
     type = string
     description = "database username"
     default = "looker"
