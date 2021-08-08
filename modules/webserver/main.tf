@@ -1,10 +1,10 @@
 terraform {
   required_version = ">= 0.12"
-  provider "aws"{
-	  region = var.aws_region
-  }
 }
 
+provider "aws"{
+	region = var.aws_region
+}
 output "instance" {
 	value = aws_instance.webserver
 }

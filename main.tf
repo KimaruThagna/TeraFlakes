@@ -5,10 +5,20 @@ terraform {
 module "webapp_qa_environment"{
   source        = "./modules/webserver"
 	name          = "webapp_qa"
-	vpc_id        = "741852852"
+	vpc_id        = "78596"
 	cidr_block    = "10.0.0.0/16"
 	ami           = "ami-003634241a8fcdec0"
 	instance_type = "t2.micro"
+}
+
+
+module "webapp_staging_environment"{
+  source        = "./modules/webserver"
+	name          = "webapp_staging"
+	vpc_id        = "78596"
+	cidr_block    = "10.0.0.0/16"
+	ami           = "ami-003634241a8fcdec0"
+	instance_type = "t2.medium"
 }
 # snowflake environment for a looker instance
 module "looker_on_snowflake"{
