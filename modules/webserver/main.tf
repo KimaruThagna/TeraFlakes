@@ -5,6 +5,7 @@ terraform {
 provider "aws"{
 	region = var.aws_region
 }
+
 output "instance" {
 	value = aws_instance.webserver
 }

@@ -34,3 +34,6 @@ To destroy resources made by the TF
 ```
 docker-compose run --rm tf destroy
 ```
+
+# Terraform Modules
+I have implemented two modules `webserver/` and `snowflake_spinup/` that handles an AWS webserver infrastructure and a SNOWFLAKE db/warehouse setup for different usecases.
