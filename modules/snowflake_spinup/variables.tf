@@ -7,38 +7,64 @@ variable "schema_map" {
 
 variable "username"{
     type = string
-    description = ""
-    default = ""
+    description = "Snowflake account username"
+    default = "company_test_account"
 }
 
-variable "username"{
+variable "region"{
     type = string
-    description = ""
-    default = ""
+    description = "Server region"
+    default = "east-us-2.azure"
 }
-variable "username"{
+variable "account"{
     type = string
-    description = ""
-    default = ""
+    description = "Account name"
+    default = "company_default_account"
 }
-variable "username"{
+variable "password"{
     type = string
-    description = ""
-    default = ""
+    description = "password"
+    default = "company_default_password"
 
 }
-variable "username"{
+
+variable "role"{
     type = string
-    description = ""
-    default = ""
+    description = "role"
+    default = "company_default_role"
+
 }
-variable "username"{
+
+#warehouse
+variable "warehouse_name"{
     type = string
-    description = ""
-    default = ""
+    description = "Default warehouse"
+    default = "company_default_warehouse"
 }
-variable "username"{
+variable "warehouse_size"{
     type = string
-    description = ""
-    default = ""
+    description = "Warehouse size"
+    default = "small"
+}
+#database
+variable "database"{
+    type = string
+    description = "Database"
+    default = "analytics"
+}
+
+variable "db_role"{
+    type = string
+    description = "database role"
+    default = "company_default_db_role"
+}
+variable "db_username"{
+    type = string
+    description = "database username"
+    default = "looker"
+}
+variable "db_password"{
+    type = string
+    description = "database password"
+    default = "company_default_db_password"
 }
