@@ -1,5 +1,5 @@
 # Imports mock data
-import "tfplan/v2" as tfplan
+import "mock_plan" as tfplan
 
 # Get all AWS instances from all modules
 ec2_instances = filter tfplan.resource_changes as _, rc {
