@@ -37,3 +37,7 @@ docker-compose run --rm tf destroy
 
 # Terraform Modules
 I have implemented two modules `webserver/` and `snowflake_spinup/` that handles an AWS webserver infrastructure and a SNOWFLAKE db/warehouse setup for different usecases.
+
+# Policy Governance using Sentinel
+Sentinel provides a way to encode policies that are imposed on the terraform code written.
+To run the policies against your terraform code, run the `terraform plan` command with the `-out=file` flag so that you can access the file.
