@@ -6,9 +6,6 @@ provider "aws"{
 	region = var.aws_region
 }
 
-output "instance" {
-	value = aws_instance.webserver
-}
 
 resource "aws_subnet" "webserver" {
 	vpc_id     = var.vpc_id
@@ -23,4 +20,7 @@ resource "aws_instance" "webserver" {
 	tags = {
 		Name = var.name
 	}
+}
+output "instance" {
+	value = aws_instance.webserver
 }
